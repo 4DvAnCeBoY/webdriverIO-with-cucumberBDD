@@ -1,5 +1,5 @@
 
-### WebdriverIO-v8 boilerplate code with Cucumber BDD
+### WebdriverIO-v8 Sample code with Cucumber BDD
 
 This repository contains a collection of sample webdriverIO-v8 (Selenium - Node.js/JavaScript) projects and libraries that demonstrate how to use the tool and develop automation script using the CucumberJS BDD framework. It uses the `chromedriver` NPM package that wraps the ChromeDriver for you. This service does not require a Selenium server, but uses ChromeDriver to communicate with the browser directly.
 
@@ -14,11 +14,7 @@ This project is tested on **Node v18.0.0** and above.  While earlier versions of
 `Node.JS:` Install  from the site - https://nodejs.org/en/  take the LTS version based on your Operating system. Please make sure you install NodeJS globally. To take full advantage of the command line you will need to make sure that you have added `node_modules/.bin` to your `$PATH`.  Otherwise you will need to install `npm install -g` globally.
 
 
-`JDK:` It is optional, install JDK and make sure class path is set properly. JAVA is require to start `Selenium Server` on your local environment nothing else.
 
-### Selenium, Appium
-
-To run your test you must have Selenium / Appium server up and running to execute any webdriverIO tests, or it will fail fast with an error. To start selenium automatically it has been added as part of `services: ['selenium-standalone']` and `services: ['appium']` in the `*.conf.ts`.  That's all there is to it.!.
 
 ### Run Some Sample Tests
 
@@ -26,19 +22,52 @@ To execute the entire test suite on local development or cloud provider, you can
 
 Option 1: Local Environment `npm run test-local`.
 
-Option 2: You can also run on `SauceLabs` or  `BrowserStack` or `LambdaTest` using `npm run test-sauce` or `npm run test-browserstack` or `npm run test-browserstack` or `npm run test-lambdatest`.
+Option 2: You can also run on `LambdaTest` using `npm run test-lambdatest`.
+
+**LambdaTest Authentication Credentials:** Make sure you have your LambdaTest credentials with you to run test automation scripts with Jest on LambdaTest Selenium Grid. You can obtain these credentials from the [LambdaTest Automation Dashboard](https://automation.lambdatest.com/) or through [LambdaTest Profile](https://accounts.lambdatest.com/detail/profile).
+
+Set LambdaTest Username and Access Key in environment variables.
+
+* For Linux/macOS:
+`sh
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR ACCESS KEY"
+`
+
+* For Windows:
+`sh
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR ACCESS KEY"
+`
 
 Option 3: Mobile Device. To execute tests on mobile device use : `npm run test-mobile`.
 
 💡 Before running mobile tests, perform the requisite Appium setup. For hassle free `one click Appium setup on OSX` refer [appium-setup-made-easy-OSX](https://github.com/amiya-pattnaik/appium-setup-made-easy-OSX) or refer [Appium Docs](http://appium.io/getting-started.html?lang=en)
 
+## Testing Locally Hosted Web-Applications
+
+In case, the script requires tunnel connection, we can set the **tunnel: true** in the **services**. This will automatically download the tunnel binary to the project, start it before test execution and close after the test is executed. We did this in single conf.js if you didn’t notice.
+
+```javascript
+exports.config = {
+  services: [
+    [
+      "lambdatest",
+      {
+        tunnel: true,
+        lambdatestOpts: {
+          logFile: "tunnel.log"
+        }
+      }
+    ]
+  ]
+
+```
+
 ### Config Files
 
 WebdriverIO uses configuration files to setup and execute tests in specific ways.  The configuration is fully customizable, and different functions can be invoked before, during and after each test or test suite.  Config files are found in the `the root directory of this boilerplate project.`and all ends with `*.conf.ts`.  These can be called via the the cli.
 
-### SauceLabs, BrowserStack and LambdaTest Integration
-
-`SauceLabs`,  `BrowserStack` and `lambdatest` specific code has been added in the `wdio.sauce.conf.ts`,  `wdio.browserstack.conf.ts` and `wdio.lambdatest.conf.ts` under the /test/config folder. You just need to provide your SauceLabs/BrowserStack/LambdaTest credentials in the config file. To run test on SauceLabs, execute command `npm run test-sauce` to run test on BrowserStack `npm run test-browserstack`, to run test on LambdaTest `npm run test-lambdatest`.
 
 ### Logs  
 

@@ -8,7 +8,7 @@ export const config: WebdriverIO.Config = {
       logFile : './log/api.log',
       services: [
           ['lambdatest', {
-              tunnel: true
+              tunnel: false
           }]
       ],
 

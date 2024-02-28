@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "@wdio/codemod": "^0.12.0",
-    "jscodeshift": "^0.14.0"
+    "jscodeshift": "^0.14.0",
+    "wdio-lambdatest-service": "^2.1.2"
   }
 }
