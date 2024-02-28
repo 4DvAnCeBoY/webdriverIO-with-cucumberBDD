@@ -29,13 +29,13 @@ Option 2: You can also run on `LambdaTest` using `npm run test-lambdatest`.
 Set LambdaTest Username and Access Key in environment variables.
 
 * For Linux/macOS:
-`sh
+`bash
 export LT_USERNAME="YOUR_USERNAME"
 export LT_ACCESS_KEY="YOUR ACCESS KEY"
 `
 
 * For Windows:
-`sh
+`bash
 set LT_USERNAME="YOUR_USERNAME"
 set LT_ACCESS_KEY="YOUR ACCESS KEY"
 `
